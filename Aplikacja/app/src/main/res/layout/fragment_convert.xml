@@ -1,13 +1,114 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="fill_parent"
     tools:context="com.kapss.akalkulator.ConvertFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
 
-</FrameLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Dane wejściowe"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+            android:layout_margin="8dp"
+            android:id="@+id/inputSectionLabel"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/inputSectionLabel"
+            android:layout_margin="8dp"
+            android:orientation="horizontal"
+            android:id="@+id/linearLayoutForInput">
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="Wartość wejściowa" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="Podstawa" />
+        </LinearLayout>
+
+
+        <com.roughike.swipeselector.SwipeSelector
+            android:id="@+id/systemSelectorForInput"
+            android:layout_below="@id/linearLayoutForInput"
+            android:layout_margin="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </com.roughike.swipeselector.SwipeSelector>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/systemSelectorForInput"
+            android:text="Dane wyjściowe"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+            android:layout_margin="8dp"
+            android:id="@+id/outputSectionLabel"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/outputSectionLabel"
+            android:layout_margin="8dp"
+            android:orientation="horizontal"
+            android:id="@+id/linearLayoutForOutput">
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="Wartość wyjściowa" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="Podstawa" />
+
+        </LinearLayout>
+
+        <com.roughike.swipeselector.SwipeSelector
+            android:id="@+id/systemSelectorForOutput"
+            android:layout_below="@id/linearLayoutForOutput"
+            android:layout_margin="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </com.roughike.swipeselector.SwipeSelector>
+
+        <Button
+            android:layout_below="@+id/systemSelectorForOutput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:id="@+id/convertButton"
+            android:text="Konwertuj" />
+
+    </RelativeLayout>
+
+
+
+
+</ScrollView>
