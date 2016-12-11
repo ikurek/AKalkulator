@@ -1,114 +1,129 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="fill_parent"
+    android:layout_height="match_parent"
     tools:context="com.kapss.akalkulator.ConvertFragment">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <TextView
+        android:id="@+id/inputSectionLabel"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        android:text="Dane wejściowe"
+        android:textAlignment="center"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
 
-        <TextView
+
+    <LinearLayout
+        android:id="@+id/linearLayoutForInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/inputSectionLabel"
+        android:layout_margin="4dp"
+        android:orientation="horizontal"
+        android:weightSum="4">
+
+        <com.rengwuxian.materialedittext.MaterialEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Dane wejściowe"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-            android:layout_margin="8dp"
-            android:id="@+id/inputSectionLabel"/>
+            android:layout_marginRight="4dp"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:hint="Liczba wejściowa"
+            android:maxLines="1"
+            app:met_floatingLabel="highlight"
+            app:met_floatingLabelTextColor="@color/colorPrimaryDark"
+            app:met_singleLineEllipsis="true" />
 
-
-        <LinearLayout
+        <com.rengwuxian.materialedittext.MaterialEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/inputSectionLabel"
-            android:layout_margin="8dp"
-            android:orientation="horizontal"
-            android:id="@+id/linearLayoutForInput">
+            android:layout_marginLeft="4dp"
+            android:layout_weight="3"
+            android:ellipsize="end"
+            android:hint="Podstawa"
+            android:maxLines="1"
+            app:met_floatingLabel="highlight"
+            app:met_floatingLabelTextColor="@color/colorPrimaryDark"
+            app:met_singleLineEllipsis="true" />
+    </LinearLayout>
 
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:text="Wartość wejściowa" />
-
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:text="Podstawa" />
-        </LinearLayout>
+    <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+        android:id="@+id/systemSelectorForInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayoutForInput"
+        android:hint="System Liczbowy"
+        app:met_floatingLabel="highlight"
+        app:met_floatingLabelTextColor="@color/colorPrimaryDark" />
 
 
-        <com.roughike.swipeselector.SwipeSelector
-            android:id="@+id/systemSelectorForInput"
-            android:layout_below="@id/linearLayoutForInput"
-            android:layout_margin="8dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/outputSectionLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/systemSelectorForInput"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginTop="16dp"
+        android:text="Dane wyjściowe"
+        android:textAlignment="center"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
 
-        </com.roughike.swipeselector.SwipeSelector>
+    <LinearLayout
+        android:id="@+id/linearLayoutForOutput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/outputSectionLabel"
+        android:layout_margin="4dp"
+        android:orientation="horizontal"
+        android:weightSum="4">
 
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/systemSelectorForInput"
-            android:text="Dane wyjściowe"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-            android:layout_margin="8dp"
-            android:id="@+id/outputSectionLabel"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/outputSectionLabel"
-            android:layout_margin="8dp"
-            android:orientation="horizontal"
-            android:id="@+id/linearLayoutForOutput">
-
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:text="Wartość wyjściowa" />
-
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:text="Podstawa" />
-
-        </LinearLayout>
-
-        <com.roughike.swipeselector.SwipeSelector
-            android:id="@+id/systemSelectorForOutput"
-            android:layout_below="@id/linearLayoutForOutput"
-            android:layout_margin="8dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-        </com.roughike.swipeselector.SwipeSelector>
-
-        <Button
-            android:layout_below="@+id/systemSelectorForOutput"
+        <com.rengwuxian.materialedittext.MaterialEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:id="@+id/convertButton"
-            android:text="Konwertuj" />
+            android:layout_marginRight="4dp"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:hint="Liczba wyjściowa"
+            android:maxLines="1"
+            app:met_floatingLabel="highlight"
+            app:met_singleLineEllipsis="true" />
 
-    </RelativeLayout>
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:layout_weight="3"
+            android:ellipsize="end"
+            android:hint="Podstawa"
+            android:maxLines="1"
+            app:met_floatingLabel="highlight"
+            app:met_singleLineEllipsis="true" />
+
+    </LinearLayout>
+
+    <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+        android:id="@+id/systemSelectorForOutput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayoutForOutput"
+        android:layout_margin="4dp"
+        android:hint="System Liczbowy"
+        app:met_floatingLabel="highlight"
+        app:met_floatingLabelTextColor="@color/colorPrimaryDark" />
 
 
+    <Button
+        android:id="@+id/convertButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="Konwertuj" />
 
 
-</ScrollView>
+</RelativeLayout>

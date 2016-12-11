@@ -1,14 +1,14 @@
 package com.kapss.akalkulator;
 
 
-import android.os.Bundle;
 import android.app.Fragment;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 
-import com.roughike.swipeselector.SwipeItem;
-import com.roughike.swipeselector.SwipeSelector;
+import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
 
 
 public class ConvertFragment extends Fragment {
@@ -39,19 +39,24 @@ public class ConvertFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_convert, container, false);
 
-        //Konfiguracja selectora dla systemu wejściowego
-        //FIXME: To można na pewno napisac ładniej. Napisz to ładniej.
-        SwipeSelector swipeSelectorForInput = (SwipeSelector) view.findViewById(R.id.systemSelectorForInput);
-        SwipeSelector swipeSelectorForOutput = (SwipeSelector) view.findViewById(R.id.systemSelectorForOutput);
-        swipeSelectorForInput.setItems(
-                new SwipeItem(0, "System naturalny", "System liczbowy, w którym podstawa jest liczbą całkowitą"),
-                new SwipeItem(1, "System uzupełnieniowy", "System liczbowy posiadający nieskonczone rozszerzeie lewostronne"));
-
-        swipeSelectorForOutput.setItems(
-                new SwipeItem(0, "System naturalny", "System liczbowy, w którym podstawa jest liczbą całkowitą"),
-                new SwipeItem(1, "System uzupełnieniowy", "System liczbowy posiadający nieskonczone rozszerzeie lewostronne"));
+        //Konfiguracja rozwijanych list
+        fillSystemList(view);
 
         return view;
+    }
+
+    //Funkcja wrzuca dane z array'a przez arrayadapter
+    //do spinnera który zawiera listę systemów liczbowych
+    public void fillSystemList(View view) {
+
+        String[] ITEMS = {"System Naturalny", "System Uzupełnieniowy", "Kod z Obciążeniem"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, ITEMS);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        MaterialBetterSpinner systemSelectorForInput = (MaterialBetterSpinner) view.findViewById(R.id.systemSelectorForInput);
+        systemSelectorForInput.setAdapter(adapter);
+        MaterialBetterSpinner systemSelectorForOutput = (MaterialBetterSpinner) view.findViewById(R.id.systemSelectorForOutput);
+        systemSelectorForOutput.setAdapter(adapter);
+
     }
 
 }
