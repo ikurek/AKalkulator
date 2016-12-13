@@ -7,11 +7,23 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 
+import com.rengwuxian.materialedittext.MaterialEditText;
 import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
 
 
 public class ConvertFragment extends Fragment {
+
+    public MathConvertLibrary mathConvertLibrary;
+    public MaterialBetterSpinner systemSelectorForInput;
+    public MaterialBetterSpinner systemSelectorForOutput;
+    public MaterialEditText inputNumberEditText;
+    public MaterialEditText outputNumberEditText;
+    public MaterialEditText inputBaseEditText;
+    public MaterialEditText outputBaseEditText;
+    public Button convertButton;
+    public String finalValue;
 
 
     //Pusty konstruktor
@@ -31,6 +43,9 @@ public class ConvertFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        //Załaduj MathConvertLibrary
+        mathConvertLibrary = new MathConvertLibrary();
+
 
     }
 
@@ -42,6 +57,28 @@ public class ConvertFragment extends Fragment {
         //Konfiguracja rozwijanych list
         fillSystemList(view);
 
+        //Przypisanie elementow UI do zmiennych
+        assignUIElements(view);
+
+        //Konfiguracja przycisku
+        //Zawiera onclick listener, który w zalezności od wyboru uzytkownika wybiera poprawny algorytm konwersji
+        //Znaczy, nie wiem czy wybiera, ale powinien
+        convertButton = (Button) view.findViewById(R.id.convertButton);
+        convertButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String selectedInputSystem = systemSelectorForInput.getText().toString();
+                String selectedOutputSystem = systemSelectorForOutput.getText().toString();
+
+                finalValue = selectConversion(selectedInputSystem, selectedOutputSystem);
+                outputNumberEditText.setText(finalValue);
+
+
+            }
+        });
+
+
+
         return view;
     }
 
@@ -49,13 +86,37 @@ public class ConvertFragment extends Fragment {
     //do spinnera który zawiera listę systemów liczbowych
     public void fillSystemList(View view) {
 
-        String[] ITEMS = {"System Naturalny", "System Uzupełnieniowy", "Kod z Obciążeniem"};
+        String[] ITEMS = {"System Naturalny", "System Uzupełnieniowy"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, ITEMS);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        MaterialBetterSpinner systemSelectorForInput = (MaterialBetterSpinner) view.findViewById(R.id.systemSelectorForInput);
+        systemSelectorForInput = (MaterialBetterSpinner) view.findViewById(R.id.systemSelectorForInput);
         systemSelectorForInput.setAdapter(adapter);
-        MaterialBetterSpinner systemSelectorForOutput = (MaterialBetterSpinner) view.findViewById(R.id.systemSelectorForOutput);
+        systemSelectorForOutput = (MaterialBetterSpinner) view.findViewById(R.id.systemSelectorForOutput);
         systemSelectorForOutput.setAdapter(adapter);
+
+    }
+
+    public void assignUIElements(View view) {
+
+        inputNumberEditText = (MaterialEditText) view.findViewById(R.id.inputNumber);
+        outputNumberEditText = (MaterialEditText) view.findViewById(R.id.outputNumber);
+        systemSelectorForInput = (MaterialBetterSpinner) view.findViewById(R.id.systemSelectorForInput);
+        systemSelectorForOutput = (MaterialBetterSpinner) view.findViewById(R.id.systemSelectorForOutput);
+        inputBaseEditText = (MaterialEditText) view.findViewById(R.id.inputBase);
+        outputBaseEditText = (MaterialEditText) view.findViewById(R.id.outputBase);
+
+
+    }
+
+    public String selectConversion(String selectedInputSystem, String selectedOutputSystem) {
+
+        if(selectedInputSystem.equals("System Naturalny") && selectedOutputSystem.equals("System Naturalny")) {
+            finalValue = mathConvertLibrary.ConvertFromNaturalToNatural(inputNumberEditText.getText().toString(), inputBaseEditText.getText().toString(), outputBaseEditText.getText().toString());
+
+        }
+
+
+        return finalValue;
 
     }
 

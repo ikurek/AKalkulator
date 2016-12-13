@@ -27,6 +27,7 @@
         android:weightSum="4">
 
         <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/inputNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginRight="4dp"
@@ -39,6 +40,7 @@
             app:met_singleLineEllipsis="true" />
 
         <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/inputBase"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="4dp"
@@ -83,6 +85,7 @@
         android:weightSum="4">
 
         <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/outputNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginRight="4dp"
@@ -94,6 +97,7 @@
             app:met_singleLineEllipsis="true" />
 
         <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/outputBase"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="4dp"
