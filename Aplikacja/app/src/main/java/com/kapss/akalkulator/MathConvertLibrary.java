@@ -25,18 +25,29 @@ public class MathConvertLibrary {
         Integer inputBaseValue = Integer.valueOf(inputBase);
         Integer outputBaseValue = Integer.valueOf(outputBase);
         Integer inputNumberValue = Integer.parseInt(inputNumberFull, inputBaseValue);
-        String fractalValue = "";
-        Integer currentFractalValue = 0;
+        String fractalValue;
+        Double tempFractalValue = 0.0;
+        Integer fractalValueAsFullIntNumber;
 
+        //Zamiana standardowym algorytmem
         for (int i = 0; i < inputNumberFractal.length(); i++) {
 
-            currentFractalValue = Integer.valueOf(inputNumberFractal.charAt(i)) / (inputBaseValue) ^ (i + 1);
-            fractalValue = fractalValue + currentFractalValue.toString();
+            Integer currentNumber = Integer.valueOf(inputNumberFractal.charAt(i)) - 48;
+            Double currentValue = Math.pow(inputBaseValue, i + 1);
+            tempFractalValue = tempFractalValue + currentNumber / currentValue;
+            System.out.println(currentNumber + " - " + currentValue + " - " + tempFractalValue);
 
         }
 
+        //Ucina znaki "0."
+        fractalValue = tempFractalValue.toString().substring(2);
+        fractalValueAsFullIntNumber = Integer.valueOf(fractalValue);
 
-        String outputNumber = Integer.toString(inputNumberValue, outputBaseValue) + "," + Integer.toString(currentFractalValue, outputBaseValue);
+
+        //TODO: Ucina 0, jeżeli ułamek zaczyna się od 0, np 0,00625
+        //FIXME: Popraw to
+
+        String outputNumber = Integer.toString(inputNumberValue, outputBaseValue) + "," + Integer.toString(fractalValueAsFullIntNumber, outputBaseValue);
         return outputNumber;
 
     }
