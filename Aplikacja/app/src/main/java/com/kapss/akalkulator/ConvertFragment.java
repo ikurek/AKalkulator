@@ -12,6 +12,8 @@ import android.widget.Button;
 import com.rengwuxian.materialedittext.MaterialEditText;
 import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
 
+import java.util.regex.Pattern;
+
 
 public class ConvertFragment extends Fragment {
 
@@ -23,6 +25,9 @@ public class ConvertFragment extends Fragment {
     public MaterialEditText inputBaseEditText;
     public MaterialEditText outputBaseEditText;
     public Button convertButton;
+    public String inputNumber;
+    public String inputNumberFullPart;
+    public String inputNumberFractalPart;
     public String finalValue;
 
 
@@ -61,6 +66,7 @@ public class ConvertFragment extends Fragment {
         assignUIElements(view);
 
         //Konfiguracja przycisku
+        //Kliknięcie pobiera wartość podanej liczby, startuje parser, a następnie konwersję
         //Zawiera onclick listener, który w zalezności od wyboru uzytkownika wybiera poprawny algorytm konwersji
         //Znaczy, nie wiem czy wybiera, ale powinien
         convertButton = (Button) view.findViewById(R.id.convertButton);
@@ -70,13 +76,15 @@ public class ConvertFragment extends Fragment {
                 String selectedInputSystem = systemSelectorForInput.getText().toString();
                 String selectedOutputSystem = systemSelectorForOutput.getText().toString();
 
+                inputNumber = inputNumberEditText.getText().toString();
+                parseInputNumber(inputNumber);
+
                 finalValue = selectConversion(selectedInputSystem, selectedOutputSystem);
                 outputNumberEditText.setText(finalValue);
 
 
             }
         });
-
 
 
         return view;
@@ -108,16 +116,45 @@ public class ConvertFragment extends Fragment {
 
     }
 
+
+    //Sprawdza czy liczba ma część ułamkową
+    //Jeżeli nie przypisuje jej część ułamkową jako 0
+    //Jeżeli tak to rozbija ją na dwa stringi
+    public void parseInputNumber(String inputNumber) {
+        if (inputNumber.contains(".")) {
+
+            String[] splitter = inputNumber.split(Pattern.quote("."));
+            inputNumberFullPart = splitter[0];
+            inputNumberFractalPart = splitter[1];
+
+        } else if (inputNumber.contains(",")) {
+
+            String[] splitter = inputNumber.split(Pattern.quote(","));
+            inputNumberFullPart = splitter[0];
+            inputNumberFractalPart = splitter[1];
+
+        } else {
+            inputNumberFractalPart = "0";
+            inputNumberFullPart = inputNumber;
+        }
+
+
+    }
+
+
+    //Funkcja wywołuje odpowiedni algorytm konwersji, zależnie od wybranych systemów
+    //Zwraca końcową wartość liczby
     public String selectConversion(String selectedInputSystem, String selectedOutputSystem) {
 
-        if(selectedInputSystem.equals("System Naturalny") && selectedOutputSystem.equals("System Naturalny")) {
-            finalValue = mathConvertLibrary.ConvertFromNaturalToNatural(inputNumberEditText.getText().toString(), inputBaseEditText.getText().toString(), outputBaseEditText.getText().toString());
-
+        if (selectedInputSystem.equals("System Naturalny") && selectedOutputSystem.equals("System Naturalny")) {
+            finalValue = mathConvertLibrary.ConvertFromNaturalToNatural(inputNumberFullPart, inputNumberFractalPart, inputBaseEditText.getText().toString(),
+                    outputBaseEditText.getText().toString());
         }
 
 
         return finalValue;
 
     }
+
 
 }
