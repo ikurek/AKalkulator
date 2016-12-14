@@ -6,9 +6,12 @@ package com.kapss.akalkulator;
 
 public class MathConvertLibrary {
 
+    MathSupportLibrary mathSupportLibrary;
+
     //Pusty konstruktor
     public MathConvertLibrary() {
 
+        mathSupportLibrary = new MathSupportLibrary();
     }
 
 
@@ -27,7 +30,7 @@ public class MathConvertLibrary {
         Integer inputNumberValue = Integer.parseInt(inputNumberFull, inputBaseValue);
         String fractalValue;
         Double tempFractalValue = 0.0;
-        Integer fractalValueAsFullIntNumber;
+        Integer fractalValueAsFullIntNumber = 0;
 
         //Zamiana standardowym algorytmem
         for (int i = 0; i < inputNumberFractal.length(); i++) {
@@ -40,8 +43,17 @@ public class MathConvertLibrary {
         }
 
         //Ucina znaki "0."
-        fractalValue = tempFractalValue.toString().substring(2,8);
-        fractalValueAsFullIntNumber = Integer.valueOf(fractalValue);
+        try {
+            fractalValue = tempFractalValue.toString().substring(2);
+            fractalValueAsFullIntNumber = Integer.valueOf(fractalValue);
+        } catch (NumberFormatException numberFormatException) {
+
+            fractalValue="0";
+            numberFormatException.printStackTrace();
+
+        }
+
+
 
 
         //TODO: Ucina 0, jeżeli ułamek zaczyna się od 0, np 0,00625

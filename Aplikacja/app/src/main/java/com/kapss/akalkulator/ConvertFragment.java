@@ -18,6 +18,7 @@ import java.util.regex.Pattern;
 public class ConvertFragment extends Fragment {
 
     public MathConvertLibrary mathConvertLibrary;
+    public MathSupportLibrary mathSupportLibrary;
     public MaterialBetterSpinner systemSelectorForInput;
     public MaterialBetterSpinner systemSelectorForOutput;
     public MaterialEditText inputNumberEditText;
@@ -28,6 +29,8 @@ public class ConvertFragment extends Fragment {
     public String inputNumber;
     public String inputNumberFullPart;
     public String inputNumberFractalPart;
+    public String inputBase;
+    public String outputBase;
     public String finalValue;
 
 
@@ -48,8 +51,9 @@ public class ConvertFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //Załaduj MathConvertLibrary
+        //Załaduj MathConvertLibrary i MathSupportLibrary
         mathConvertLibrary = new MathConvertLibrary();
+        mathSupportLibrary = new MathSupportLibrary();
 
 
     }
@@ -73,14 +77,24 @@ public class ConvertFragment extends Fragment {
         convertButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                //Wczytaj dane podane przez użytkownika w interfejsie
                 String selectedInputSystem = systemSelectorForInput.getText().toString();
                 String selectedOutputSystem = systemSelectorForOutput.getText().toString();
-
+                inputBase = inputBaseEditText.getText().toString();
+                outputBase = outputBaseEditText.getText().toString();
                 inputNumber = inputNumberEditText.getText().toString();
-                parseInputNumber(inputNumber);
 
-                finalValue = selectConversion(selectedInputSystem, selectedOutputSystem);
-                outputNumberEditText.setText(finalValue);
+                //Jeżeli liczba jest poprawna wystartuj parser, konwersję itd
+                //Na końcu przypisz wartość finalną do elementu UI
+                if(mathSupportLibrary.containsIllegalCharactersInSelectedBase(inputNumber, inputBase)) {
+                    inputNumberEditText.setError("Błąd");
+                } else {
+                    parseInputNumber(inputNumber);
+                    finalValue = selectConversion(selectedInputSystem, selectedOutputSystem);
+                    outputNumberEditText.setText(finalValue);
+                }
+
 
 
             }
@@ -147,8 +161,8 @@ public class ConvertFragment extends Fragment {
     public String selectConversion(String selectedInputSystem, String selectedOutputSystem) {
 
         if (selectedInputSystem.equals("System Naturalny") && selectedOutputSystem.equals("System Naturalny")) {
-            finalValue = mathConvertLibrary.ConvertFromNaturalToNatural(inputNumberFullPart, inputNumberFractalPart, inputBaseEditText.getText().toString(),
-                    outputBaseEditText.getText().toString());
+            finalValue = mathConvertLibrary.ConvertFromNaturalToNatural(inputNumberFullPart, inputNumberFractalPart, inputBase,
+                    outputBase);
         }
 
 

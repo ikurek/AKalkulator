@@ -1,5 +1,8 @@
 package com.kapss.akalkulator;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * Created by igor on 14.12.16.
  */
@@ -10,6 +13,38 @@ public class MathSupportLibrary {
     public MathSupportLibrary() {
 
 
+    }
+
+    //Funkcja analizuje wprowadzoy string pod kątem nieprawidłowych znaków
+    //Zwraca true, jeżeli znaki nienależące do ststemu liczbowego znalazły się w stringu
+    //Zwraca false, jeżeli string jest prawidłową liczbą w podanym systemie liczbowym
+    public boolean containsIllegalCharactersInSelectedBase(String stringToAnalyze, String selectedBase) {
+        Boolean containsIllegalCharacters = false;
+        Boolean containsNAN = false;
+        Boolean containsIllegalNumbers = false;
+
+        //Sprawdź pod kątem nieprawidłowych znaków
+        Pattern pattern = Pattern.compile("[~#@*+%{}<>\\[\\]|\"\\_^]");
+        Matcher matcher = pattern.matcher(stringToAnalyze);
+        containsNAN = matcher.find();
+        System.out.println(containsNAN);
+
+        //Sprawdź pod kątem liczb przekraczających zakres systemu liczbowego
+        for(int i = 0; i < stringToAnalyze.length(); i++) {
+
+            if(Integer.valueOf(stringToAnalyze.charAt(i)) - 48 >= Integer.valueOf(selectedBase)) {
+                containsIllegalNumbers = true;
+                System.out.println(Integer.valueOf(stringToAnalyze.charAt(i)) + " - " + Integer.valueOf(selectedBase));
+            }
+        }
+
+        System.out.println(containsIllegalNumbers);
+
+        if(containsNAN || containsIllegalNumbers) containsIllegalCharacters = true;
+
+        System.out.println(containsIllegalCharacters);
+
+        return containsIllegalCharacters;
     }
 
     //Dodaje na początku stringa określoną liczbę zer
