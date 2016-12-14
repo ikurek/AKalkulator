@@ -40,7 +40,7 @@ public class MathConvertLibrary {
         }
 
         //Ucina znaki "0."
-        fractalValue = tempFractalValue.toString().substring(2);
+        fractalValue = tempFractalValue.toString().substring(2,8);
         fractalValueAsFullIntNumber = Integer.valueOf(fractalValue);
 
 
