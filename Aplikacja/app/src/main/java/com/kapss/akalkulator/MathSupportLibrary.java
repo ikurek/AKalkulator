@@ -24,15 +24,15 @@ public class MathSupportLibrary {
         Boolean containsIllegalNumbers = false;
 
         //Sprawdź pod kątem nieprawidłowych znaków
-        Pattern pattern = Pattern.compile("[~#@*+%{}<>\\[\\]|\"\\_^]");
+        Pattern pattern = Pattern.compile("[~#@/*+%{}<>\\[\\]|\"_^]");
         Matcher matcher = pattern.matcher(stringToAnalyze);
         containsNAN = matcher.find();
         System.out.println(containsNAN);
 
         //Sprawdź pod kątem liczb przekraczających zakres systemu liczbowego
-        for(int i = 0; i < stringToAnalyze.length(); i++) {
+        for (int i = 0; i < stringToAnalyze.length(); i++) {
 
-            if(Integer.valueOf(stringToAnalyze.charAt(i)) - 48 >= Integer.valueOf(selectedBase)) {
+            if (Integer.valueOf(stringToAnalyze.charAt(i)) - 48 >= Integer.valueOf(selectedBase)) {
                 containsIllegalNumbers = true;
                 System.out.println(Integer.valueOf(stringToAnalyze.charAt(i)) + " - " + Integer.valueOf(selectedBase));
             }
@@ -40,7 +40,7 @@ public class MathSupportLibrary {
 
         System.out.println(containsIllegalNumbers);
 
-        if(containsNAN || containsIllegalNumbers) containsIllegalCharacters = true;
+        if (containsNAN || containsIllegalNumbers) containsIllegalCharacters = true;
 
         System.out.println(containsIllegalCharacters);
 
@@ -53,7 +53,7 @@ public class MathSupportLibrary {
 
         String zeroes = "";
 
-        for(int i = 0; i < numberOfZeroes; i ++);
+        for (int i = 0; i < numberOfZeroes; i++) ;
         {
             zeroes = "0" + zeroes;
         }
@@ -68,7 +68,7 @@ public class MathSupportLibrary {
 
         String zeroes = "";
 
-        for(int i = 0; i < numberOfZeroes; i ++);
+        for (int i = 0; i < numberOfZeroes; i++) ;
         {
             zeroes = "0" + zeroes;
         }
@@ -81,7 +81,7 @@ public class MathSupportLibrary {
     //Zwraca string z zanegowanym pierwszym bitem
     public String negateFirstByte(String binaryStringToNegateFirst) {
 
-        if(binaryStringToNegateFirst.charAt(0) == 0) {
+        if (binaryStringToNegateFirst.charAt(0) == 0) {
             return "0" + binaryStringToNegateFirst.substring(1);
         } else {
             return "1" + binaryStringToNegateFirst.substring(1);
@@ -99,5 +99,22 @@ public class MathSupportLibrary {
 
         return tempString;
 
+    }
+
+    //Oblicz odwrotność addytywną dla liczby uzupełniniowej
+    //Zwraca string będący odwrotonością addytywną
+    public String complementaryReverse(String complementaryStringToReverse, String complementaryBase) {
+        Integer BaseValue = Integer.valueOf(complementaryBase);
+        Integer MaxNmberInGivenBase = BaseValue - 1;
+        String reversedComplementaryString = "";
+
+        for(int i = 0; i < complementaryStringToReverse.length(); i++) {
+
+
+
+
+        }
+
+        return reversedComplementaryString;
     }
 }

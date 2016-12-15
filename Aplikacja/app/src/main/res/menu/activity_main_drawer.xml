@@ -1,19 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_converter"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Konwerter" />
 
-    </group>
+    <item android:title="Ogólne">
+        <menu>
+            <item
+                android:id="@+id/nav_converter"
+                android:title="Konwerter" />
+        </menu>
+    </item>
+
+    <item android:title="System Uzupełnieniowy">
+        <menu>
+            <item
+                android:id="@+id/nav_complementary_analyze"
+                android:title="Analiza liczby" />
+        </menu>
+    </item>
 
     <item android:title="Opcje">
         <menu>
             <item
                 android:id="@+id/nav_settings"
-                android:icon="@drawable/ic_menu_manage"
                 android:title="Ustawienia" />
         </menu>
     </item>

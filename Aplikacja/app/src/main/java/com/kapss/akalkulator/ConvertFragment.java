@@ -87,14 +87,13 @@ public class ConvertFragment extends Fragment {
 
                 //Jeżeli liczba jest poprawna wystartuj parser, konwersję itd
                 //Na końcu przypisz wartość finalną do elementu UI
-                if(mathSupportLibrary.containsIllegalCharactersInSelectedBase(inputNumber, inputBase)) {
+                if (mathSupportLibrary.containsIllegalCharactersInSelectedBase(inputNumber, inputBase)) {
                     inputNumberEditText.setError("Błąd");
                 } else {
                     parseInputNumber(inputNumber);
                     finalValue = selectConversion(selectedInputSystem, selectedOutputSystem);
                     outputNumberEditText.setText(finalValue);
                 }
-
 
 
             }

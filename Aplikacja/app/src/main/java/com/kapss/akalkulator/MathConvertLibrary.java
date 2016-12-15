@@ -23,7 +23,8 @@ public class MathConvertLibrary {
         1. Wczytaj liczbę wejściową, bazę wejściową i bazę wyjściową
         2. Zamień część całkowitą liczby wejściowej na Int w systemie dziesiętnym
         3. Zamień część ułamkową liczby wajściowej na Int w systemie dziesiętnym
-        3. Zamień otrzymane Int'y na string wykorzystując bazę wyjściową
+        4. Zamień otrzymane Int'y na string wykorzystując bazę wyjściową
+        5. Połącz otrzymane stringi, dodając między nimi przecinek
          */
         Integer inputBaseValue = Integer.valueOf(inputBase);
         Integer outputBaseValue = Integer.valueOf(outputBase);
@@ -48,19 +49,18 @@ public class MathConvertLibrary {
             fractalValueAsFullIntNumber = Integer.valueOf(fractalValue);
         } catch (NumberFormatException numberFormatException) {
 
-            fractalValue="0";
+            fractalValue = "0";
             numberFormatException.printStackTrace();
 
         }
 
 
-
-
         //TODO: Ucina 0, jeżeli ułamek zaczyna się od 0, np 0,00625
-        //FIXME: Popraw to
+        //FIXME: Tymczasowo dla ułamków okresowych zwracana wartość wynosi 0
 
         String outputNumber = Integer.toString(inputNumberValue, outputBaseValue) + "," + Integer.toString(fractalValueAsFullIntNumber, outputBaseValue);
         return outputNumber;
 
     }
+
 }

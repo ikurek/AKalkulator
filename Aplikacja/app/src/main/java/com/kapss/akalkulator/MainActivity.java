@@ -12,6 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import static com.kapss.akalkulator.R.id.nav_complementary_analyze;
 import static com.kapss.akalkulator.R.id.nav_converter;
 
 public class MainActivity extends AppCompatActivity
@@ -82,8 +83,8 @@ public class MainActivity extends AppCompatActivity
         if (id == nav_converter) {
             selectedFragment = new ConvertFragment();
 
-        } else if (id == R.id.nav_settings) {
-
+        } else if (id == nav_complementary_analyze) {
+            selectedFragment = new ComplementaryAnalysisFragment();
         }
 
         //Wykonaj zamianę frgmentów

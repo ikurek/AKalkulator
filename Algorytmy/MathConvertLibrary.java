@@ -6,9 +6,12 @@ package com.kapss.akalkulator;
 
 public class MathConvertLibrary {
 
+    MathSupportLibrary mathSupportLibrary;
+
     //Pusty konstruktor
     public MathConvertLibrary() {
 
+        mathSupportLibrary = new MathSupportLibrary();
     }
 
 
@@ -20,14 +23,15 @@ public class MathConvertLibrary {
         1. Wczytaj liczbę wejściową, bazę wejściową i bazę wyjściową
         2. Zamień część całkowitą liczby wejściowej na Int w systemie dziesiętnym
         3. Zamień część ułamkową liczby wajściowej na Int w systemie dziesiętnym
-        3. Zamień otrzymane Int'y na string wykorzystując bazę wyjściową
+        4. Zamień otrzymane Int'y na string wykorzystując bazę wyjściową
+        5. Połącz otrzymane stringi, dodając między nimi przecinek
          */
         Integer inputBaseValue = Integer.valueOf(inputBase);
         Integer outputBaseValue = Integer.valueOf(outputBase);
         Integer inputNumberValue = Integer.parseInt(inputNumberFull, inputBaseValue);
         String fractalValue;
         Double tempFractalValue = 0.0;
-        Integer fractalValueAsFullIntNumber;
+        Integer fractalValueAsFullIntNumber = 0;
 
         //Zamiana standardowym algorytmem
         for (int i = 0; i < inputNumberFractal.length(); i++) {
@@ -40,15 +44,23 @@ public class MathConvertLibrary {
         }
 
         //Ucina znaki "0."
-        fractalValue = tempFractalValue.toString().substring(2,8);
-        fractalValueAsFullIntNumber = Integer.valueOf(fractalValue);
+        try {
+            fractalValue = tempFractalValue.toString().substring(2);
+            fractalValueAsFullIntNumber = Integer.valueOf(fractalValue);
+        } catch (NumberFormatException numberFormatException) {
+
+            fractalValue = "0";
+            numberFormatException.printStackTrace();
+
+        }
 
 
         //TODO: Ucina 0, jeżeli ułamek zaczyna się od 0, np 0,00625
-        //FIXME: Popraw to
+        //FIXME: Tymczasowo dla ułamków okresowych zwracana wartość wynosi 0
 
         String outputNumber = Integer.toString(inputNumberValue, outputBaseValue) + "," + Integer.toString(fractalValueAsFullIntNumber, outputBaseValue);
         return outputNumber;
 
     }
+
 }
