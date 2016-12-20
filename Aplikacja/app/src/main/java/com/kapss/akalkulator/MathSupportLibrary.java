@@ -32,9 +32,9 @@ public class MathSupportLibrary {
         //Sprawdź pod kątem liczb przekraczających zakres systemu liczbowego
         for (int i = 0; i < stringToAnalyze.length(); i++) {
 
-            if (Integer.valueOf(stringToAnalyze.charAt(i)) - 48 >= Integer.valueOf(selectedBase)) {
+            if ((int) stringToAnalyze.charAt(i) - 48 >= Integer.valueOf(selectedBase)) {
                 containsIllegalNumbers = true;
-                System.out.println(Integer.valueOf(stringToAnalyze.charAt(i)) + " - " + Integer.valueOf(selectedBase));
+                System.out.println((int) stringToAnalyze.charAt(i) + " - " + Integer.valueOf(selectedBase));
             }
         }
 
@@ -108,9 +108,7 @@ public class MathSupportLibrary {
         Integer MaxNmberInGivenBase = BaseValue - 1;
         String reversedComplementaryString = "";
 
-        for(int i = 0; i < complementaryStringToReverse.length(); i++) {
-
-
+        for (int i = 0; i < complementaryStringToReverse.length(); i++) {
 
 
         }

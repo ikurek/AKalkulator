@@ -1,11 +1,25 @@
 <resources>
     <string name="app_name">AKalkulator</string>
 
+    <!-- Szuflada nawigacji -->
     <string name="navigation_drawer_open">Otwórz szufladę nawigacji</string>
     <string name="navigation_drawer_close">Zamknij szufladę nawigacji</string>
-
     <string name="action_settings">Ustawienia</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- MaterialEditText i MaterialBetterSpinner -->
+    <string name="base">Podstawa</string>
+    <string name="input_data">Dane wejściowe</string>
+    <string name="output_data">Dane wyjściowe</string>
+    <string name="input_number">Liczba wejściowa</string>
+    <string name="output_number">Liczba wyjściowa</string>
+    <string name="numerical_system">System liczbowy</string>
+
+    <!-- Buttony -->
+    <string name="convert">Konwersja</string>
+    <string name="analysis">Analiza</string>
+
+    <!-- Inne -->
+    <string name="gitlink">https://github.com/ikurek/AKalkulator</string>
+    <string name="background">Tło</string>
+
 </resources>

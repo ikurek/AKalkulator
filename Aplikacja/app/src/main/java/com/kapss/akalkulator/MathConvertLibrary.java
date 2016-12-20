@@ -6,7 +6,7 @@ package com.kapss.akalkulator;
 
 public class MathConvertLibrary {
 
-    MathSupportLibrary mathSupportLibrary;
+    private final MathSupportLibrary mathSupportLibrary;
 
     //Pusty konstruktor
     public MathConvertLibrary() {
@@ -36,7 +36,7 @@ public class MathConvertLibrary {
         //Zamiana standardowym algorytmem
         for (int i = 0; i < inputNumberFractal.length(); i++) {
 
-            Integer currentNumber = Integer.valueOf(inputNumberFractal.charAt(i)) - 48;
+            Integer currentNumber = (int) inputNumberFractal.charAt(i) - 48;
             Double currentValue = Math.pow(inputBaseValue, i + 1);
             tempFractalValue = tempFractalValue + currentNumber / currentValue;
             System.out.println(currentNumber + " - " + currentValue + " - " + tempFractalValue);

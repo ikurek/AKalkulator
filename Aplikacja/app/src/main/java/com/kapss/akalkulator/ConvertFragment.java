@@ -17,21 +17,21 @@ import java.util.regex.Pattern;
 
 public class ConvertFragment extends Fragment {
 
-    public MathConvertLibrary mathConvertLibrary;
-    public MathSupportLibrary mathSupportLibrary;
-    public MaterialBetterSpinner systemSelectorForInput;
-    public MaterialBetterSpinner systemSelectorForOutput;
-    public MaterialEditText inputNumberEditText;
-    public MaterialEditText outputNumberEditText;
-    public MaterialEditText inputBaseEditText;
-    public MaterialEditText outputBaseEditText;
-    public Button convertButton;
-    public String inputNumber;
-    public String inputNumberFullPart;
-    public String inputNumberFractalPart;
-    public String inputBase;
-    public String outputBase;
-    public String finalValue;
+    private MathConvertLibrary mathConvertLibrary;
+    private MathSupportLibrary mathSupportLibrary;
+    private MaterialBetterSpinner systemSelectorForInput;
+    private MaterialBetterSpinner systemSelectorForOutput;
+    private MaterialEditText inputNumberEditText;
+    private MaterialEditText outputNumberEditText;
+    private MaterialEditText inputBaseEditText;
+    private MaterialEditText outputBaseEditText;
+    private Button convertButton;
+    private String inputNumber;
+    private String inputNumberFullPart;
+    private String inputNumberFractalPart;
+    private String inputBase;
+    private String outputBase;
+    private String finalValue;
 
 
     //Pusty konstruktor
@@ -105,7 +105,7 @@ public class ConvertFragment extends Fragment {
 
     //Funkcja wrzuca dane z array'a przez arrayadapter
     //do spinnera który zawiera listę systemów liczbowych
-    public void fillSystemList(View view) {
+    private void fillSystemList(View view) {
 
         String[] ITEMS = {"System Naturalny", "System Uzupełnieniowy"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, ITEMS);
@@ -117,7 +117,7 @@ public class ConvertFragment extends Fragment {
 
     }
 
-    public void assignUIElements(View view) {
+    private void assignUIElements(View view) {
 
         inputNumberEditText = (MaterialEditText) view.findViewById(R.id.inputNumber);
         outputNumberEditText = (MaterialEditText) view.findViewById(R.id.outputNumber);
@@ -133,7 +133,7 @@ public class ConvertFragment extends Fragment {
     //Sprawdza czy liczba ma część ułamkową
     //Jeżeli nie przypisuje jej część ułamkową jako 0
     //Jeżeli tak to rozbija ją na dwa stringi
-    public void parseInputNumber(String inputNumber) {
+    private void parseInputNumber(String inputNumber) {
         if (inputNumber.contains(".")) {
 
             String[] splitter = inputNumber.split(Pattern.quote("."));
@@ -157,7 +157,7 @@ public class ConvertFragment extends Fragment {
 
     //Funkcja wywołuje odpowiedni algorytm konwersji, zależnie od wybranych systemów
     //Zwraca końcową wartość liczby
-    public String selectConversion(String selectedInputSystem, String selectedOutputSystem) {
+    private String selectConversion(String selectedInputSystem, String selectedOutputSystem) {
 
         if (selectedInputSystem.equals("System Naturalny") && selectedOutputSystem.equals("System Naturalny")) {
             finalValue = mathConvertLibrary.ConvertFromNaturalToNatural(inputNumberFullPart, inputNumberFractalPart, inputBase,

@@ -20,9 +20,7 @@
 
     <item android:title="Opcje">
         <menu>
-            <item
-                android:id="@+id/nav_settings"
-                android:title="Ustawienia" />
+            <item android:title="Ustawienia" />
         </menu>
     </item>
 

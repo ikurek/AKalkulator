@@ -12,7 +12,7 @@
         android:layout_marginBottom="4dp"
         android:layout_marginLeft="4dp"
         android:layout_marginRight="4dp"
-        android:text="Dane wejściowe"
+        android:text="@string/input_data"
         android:textAlignment="center"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
 
@@ -33,7 +33,7 @@
             android:layout_marginRight="4dp"
             android:layout_weight="1"
             android:ellipsize="end"
-            android:hint="Liczba wejściowa"
+            android:hint="@string/input_number"
             android:maxLines="1"
             app:met_floatingLabel="highlight"
             app:met_floatingLabelTextColor="@color/colorPrimaryDark"
@@ -46,7 +46,7 @@
             android:layout_marginLeft="4dp"
             android:layout_weight="3"
             android:ellipsize="end"
-            android:hint="Podstawa"
+            android:hint="@string/base"
             android:maxLines="1"
             app:met_floatingLabel="highlight"
             app:met_floatingLabelTextColor="@color/colorPrimaryDark"
@@ -58,7 +58,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/linearLayoutForInput"
-        android:hint="System Liczbowy"
+        android:hint="@string/numerical_system"
         app:met_floatingLabel="highlight"
         app:met_floatingLabelTextColor="@color/colorPrimaryDark" />
 
@@ -71,7 +71,7 @@
         android:layout_marginLeft="4dp"
         android:layout_marginRight="4dp"
         android:layout_marginTop="16dp"
-        android:text="Dane wyjściowe"
+        android:text="@string/output_data"
         android:textAlignment="center"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
 
@@ -91,7 +91,7 @@
             android:layout_marginRight="4dp"
             android:layout_weight="1"
             android:ellipsize="end"
-            android:hint="Liczba wyjściowa"
+            android:hint="@string/output_number"
             android:maxLines="1"
             app:met_floatingLabel="highlight"
             app:met_singleLineEllipsis="true" />
@@ -103,7 +103,7 @@
             android:layout_marginLeft="4dp"
             android:layout_weight="3"
             android:ellipsize="end"
-            android:hint="Podstawa"
+            android:hint="@string/base"
             android:maxLines="1"
             app:met_floatingLabel="highlight"
             app:met_singleLineEllipsis="true" />
@@ -116,7 +116,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/linearLayoutForOutput"
         android:layout_margin="4dp"
-        android:hint="System Liczbowy"
+        android:hint="@string/numerical_system"
         app:met_floatingLabel="highlight"
         app:met_floatingLabelTextColor="@color/colorPrimaryDark" />
 
@@ -127,7 +127,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="Konwertuj" />
+        android:text="@string/convert" />
 
 
 </RelativeLayout>

@@ -1,9 +1,47 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.kapss.akalkulator.ComplementaryAnalysisFragment">
 
+    <LinearLayout
+        android:id="@+id/linearLayoutForOutput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:orientation="horizontal"
+        android:weightSum="3">
 
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/inputNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="4dp"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:hint="@string/input_number"
+            android:maxLines="1"
+            app:met_floatingLabel="highlight"
+            app:met_singleLineEllipsis="true" />
+
+        <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+            android:id="@+id/systemSelectorForInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:hint="@string/base"
+            android:maxLines="1"
+            app:met_floatingLabel="highlight"
+            app:met_floatingLabelTextColor="@color/colorPrimaryDark" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/analyzeButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/analysis" />
 
 </RelativeLayout>
