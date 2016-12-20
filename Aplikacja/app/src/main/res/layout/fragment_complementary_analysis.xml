@@ -6,7 +6,7 @@
     tools:context="com.kapss.akalkulator.ComplementaryAnalysisFragment">
 
     <LinearLayout
-        android:id="@+id/linearLayoutForOutput"
+        android:id="@+id/linearLayoutForInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="4dp"
@@ -34,6 +34,25 @@
             android:maxLines="1"
             app:met_floatingLabel="highlight"
             app:met_floatingLabelTextColor="@color/colorPrimaryDark" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayoutForSign"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sign"/>
+
+        <TextView
+            android:id="@+id/textViewForSign"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
     </LinearLayout>
 
     <Button
