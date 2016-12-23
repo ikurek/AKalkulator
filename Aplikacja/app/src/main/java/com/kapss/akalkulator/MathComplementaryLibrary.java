@@ -21,14 +21,14 @@ public class MathComplementaryLibrary {
     public Boolean isComplementarySigned(String inputNumber, String complementaryBase){
 
         //Zbiera wartość bazy i zapisuje jako int
-        Integer baseValue = Integer.valueOf(complementaryBase.substring(1));
+        Double baseValue = Double.valueOf(complementaryBase.substring(1));
+        //Zbiera pierwszą cyfrę
         Integer firstDigit = inputNumber.charAt(0) - 48;
+        //Oblicz wartość graniczną beta/2 - 1
+        Double middlevalue = baseValue/2 - 1;
 
-        //TODO: Myli minus i plus, zły wzór :-/
-        //FIXME: Popraw ten wzór, jest gdzieś w notatkach
-        System.out.println(baseValue/2 + " >=< " + firstDigit);
-
-        return (baseValue/2 < firstDigit);
+        //Zwraca porównanie pierwszej cyfry z wartością graniczną
+        return (middlevalue < firstDigit);
 
     }
 

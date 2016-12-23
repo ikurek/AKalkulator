@@ -59,7 +59,7 @@ public class ComplementaryAnalysisFragment extends Fragment {
                 textViewSign.setText(getSign(inputNumber, complementaryBase));
 
                 //TODO: TEMP!!!!!
-                textViewSign.setText(getAbsoluteValue(inputNumber, complementaryBase));
+                //textViewSign.setText(getAbsoluteValue(inputNumber, complementaryBase));
             }
         });
 
