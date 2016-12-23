@@ -15,7 +15,7 @@
     <string name="numerical_system">System liczbowy</string>
 
     <!-- TextView -->
-    <string name="sign">Znak</string>
+    <string name="sign">Znak:</string>
 
     <!-- Buttony -->
     <string name="convert">Konwersja</string>

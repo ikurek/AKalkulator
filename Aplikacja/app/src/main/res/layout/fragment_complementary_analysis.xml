@@ -38,18 +38,21 @@
 
     <LinearLayout
         android:id="@+id/linearLayoutForSign"
+        android:layout_below="@+id/linearLayoutForInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="4dp"
         android:orientation="horizontal">
 
         <TextView
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/sign"/>
 
         <TextView
             android:id="@+id/textViewForSign"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 

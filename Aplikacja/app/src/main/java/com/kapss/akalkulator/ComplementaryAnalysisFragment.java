@@ -57,6 +57,9 @@ public class ComplementaryAnalysisFragment extends Fragment {
                 String complementaryBase = systemSelectorForInput.getText().toString();
 
                 textViewSign.setText(getSign(inputNumber, complementaryBase));
+
+                //TODO: TEMP!!!!!
+                textViewSign.setText(getAbsoluteValue(inputNumber, complementaryBase));
             }
         });
 
@@ -89,6 +92,11 @@ public class ComplementaryAnalysisFragment extends Fragment {
         if(mathComplementaryLibrary.isComplementarySigned(inputNumber, complementaryBase)) return "-";
         else return "+";
 
+    }
+
+    private String getAbsoluteValue(String inputNumber, String complementaryBase) {
+
+        return mathComplementaryLibrary.calculateAbsoluteValue(inputNumber, complementaryBase);
     }
 
 }
